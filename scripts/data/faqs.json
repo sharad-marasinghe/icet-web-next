@@ -1,0 +1,161 @@
+{
+ "general": [
+  {
+   "q": "What is iCET’s Software Engineering Program?",
+   "a": "iCET’s Software Engineering Program is a hands-on, industry-focused training course designed\nto prepare students for real-world software development careers. It covers programming,\ndatabases, web and mobile development, software design, and more."
+  },
+  {
+   "q": "Who can enroll the program?",
+   "a": "Anyone with a passion for IT and technology can apply. But it depends on the selected program.\nContact our admin team (Hotline: 0705 805 805) for more details. Ideal candidates are:\n● Students who have completed A/Ls (any stream)\n● Students who have completed O/Ls\n● Undergraduates\n● Degree holders\n● Professionals from any field\n● Anyone interested in starting a career in Software Engineering"
+  },
+  {
+   "q": "Do I need prior programming knowledge?",
+   "a": "No prior experience is required for our programs. We start from the basics and guide you toward\nadvanced Enterprise Level step by step."
+  },
+  {
+   "q": "How long is the program?",
+   "a": "The standard duration is 8–24 months, depending on the selected program. Contact our admin\nteam (Hotline: 0705 805 805) for more details."
+  },
+  {
+   "q": "What will I learn during the program?",
+   "a": "You will gain knowledge and skills in:\n● Programming (Python, Java, JavaScript, etc.)\n● Web Development (HTML, CSS, React, Node, Spring Boot)\n● Database Management (MySQL, MongoDB)\n● Software Engineering principles\n● Version Control (Git/GitHub)\n● Industry-focused project-based learning &amp; real-world simulations\n● Much more content included"
+  },
+  {
+   "q": "Will I get a certificate?",
+   "a": "Yes, upon successful completion of the program, students will receive a Certificate."
+  },
+  {
+   "q": "Is this program recognized?",
+   "a": "Yes. The iCET institute and programs are registered under the Tertiary &amp; Vocational Education\nCommission (TVEC). Reg. No: P03/0177"
+  },
+  {
+   "q": "Is there any job placement support?",
+   "a": "We provide:\n● Interview preparation &amp; mock interviews\n● Career guidance\n● Industry placement\n● Industry networking events"
+  },
+  {
+   "q": "How much does the program cost?",
+   "a": "Course fees vary based on the program selected, ranging from Rs. 70,000 to Rs. 400,000. We\noffer flexible payment plans to make it affordable for everyone. Contact our admin team (Hotline:\n0705 805 805) for more details."
+  },
+  {
+   "q": "Where is iCET located?",
+   "a": "We are based in Panadure (12500), Sri Lanka and operate through both in-person training\ncenters and online learning platforms for remote learners."
+  },
+  {
+   "q": "Can I learn online?",
+   "a": "Yes. We offer online, physical and hybrid classes. Students can join from anywhere in Sri\nLanka or abroad."
+  },
+  {
+   "q": "How can I register?",
+   "a": "You can:\n● Visit our website and fill out the online registration form\n● Call/WhatsApp our support team (Hotline: 0705 805 805)\n● Visit our office for walk-in registration"
+  },
+  {
+   "q": "Who are the instructors?",
+   "a": "Our instructors are industry professionals with experience in Software Engineering. The lead\ntrainer, Dr. Niroth Samarawickrama, has over 20 years of experience preparing students for\nentry into the field of software engineering."
+  },
+  {
+   "q": "Can university students join this as an extra qualification?",
+   "a": "Yes, many university students join to gain practical skills and industry exposure alongside their\nacademic degrees."
+  },
+  {
+   "q": "What makes iCET different?",
+   "a": "● Real-world project-based learning\n● Supportive mentoring and career guidance\n● Focus on earning potential early in your journey\n● A strong network of alumni and employers"
+  },
+  {
+   "q": "What is the Age Limit?",
+   "a": "There is no strict age limit. Skill and dedication are the most important factors. While age may\nbe considered during interviews, it is not a concern for freelancing or skill-based career paths."
+  },
+  {
+   "q": "Are These Programs Suitable for a Career Change?",
+   "a": "Yes. Our programs are designed to support learners from entry level to industry readiness,\nmaking them ideal for career changers."
+  },
+  {
+   "q": "What Are the Payment Options?",
+   "a": "Payments can be made via:\n● Online bank transfer\n● Cash deposit\n● Direct payment at the institute"
+  },
+  {
+   "q": "Can I Pay in Installments?",
+   "a": "Yes, flexible installment plans are available. Contact our admin team (Hotline: 0705 805 805) for\nmore details."
+  },
+  {
+   "q": "What If I Haven’t Completed A/Ls?",
+   "a": "You can join our iCM Program with O/L results. To directly enter the Diploma Program, you may\nsit for an Aptitude Test and complete a Foundation Program equivalent to A/Ls or NVQ Level 4.\n(ex: Foundation IT - FIT program by the University of Colombo)."
+  },
+  {
+   "q": "Are There Job Opportunities?",
+   "a": "Most of the students join the Industry after completing the programs. They have more options\nwith the iCET Industry Placement Program. We guide students toward relevant career paths"
+  },
+  {
+   "q": "Does iCET Offer Training Opportunities?",
+   "a": "Yes. We coordinate interviews with IT companies and prepare our students thoroughly through\nskills training and evaluations in every module."
+  },
+  {
+   "q": "Which Companies Offer Industry Training?",
+   "a": "Please visit the \"Industry Placement\" page on our website for a list of training companies."
+  },
+  {
+   "q": "Can I Get International Opportunities?",
+   "a": "Yes. Our students often secure international offers, particularly via LinkedIn. We provide\nguidance on how to pursue such opportunities."
+  },
+  {
+   "q": "Do I need a laptop?",
+   "a": "Yes. Please ensure your laptop meets the required specifications, which can be found in our\nLaptop Specifications Checklist."
+  }
+ ],
+ "icd": [
+  {
+   "q": "Is there a software engineer course after A/L in Sri Lanka?",
+   "a": "Yes. iCD is iCET's one-year software engineer course after A/L, open to A/L leavers, O/L leavers, non-IT graduates, and career switchers. No prior programming experience is required to start."
+  },
+  {
+   "q": "Do I need to go to university to become a software engineer?",
+   "a": "Not necessarily. iCD is a direct, practical alternative to a traditional degree path — four progressive levels plus 6 months of real industrial training, so you graduate with genuine project experience."
+  },
+  {
+   "q": "What will I actually learn in iCD?",
+   "a": "Across four levels: programming fundamentals and databases, object-oriented development and web technologies, advanced API and enterprise development with Spring and Angular, and finally mobile, cloud, and agentic AI development using tools like GitHub Copilot, Cursor, and n8n."
+  },
+  {
+   "q": "How much does the iCD program cost?",
+   "a": "The full-time diploma is LKR 225,000, and the part-time diploma is LKR 200,000. Both offer an Early Bird one-time payment, a 20% discount one-time option, or a 3-part installment plan."
+  },
+  {
+   "q": "Is iCD available online or in person?",
+   "a": "Both. iCD is available online, physically at iCET's Panadura campus, or in a hybrid format, supported by advanced virtual platforms and fully equipped labs."
+  },
+  {
+   "q": "How do I apply after receiving my A/L results?",
+   "a": "Contact your student counsellor, request your offer letter, choose a payment plan, and submit your signed offer letter with payment receipt to complete registration."
+  }
+ ],
+ "icm": [
+  {
+   "q": "Is iCM a software development course for university students in Sri Lanka?",
+   "a": "Yes. iCM is iCET's 6-month software development course for university students in Sri Lanka who want practical, industry-ready skills alongside their degree. It is also open to A/L students, career switchers, and job seekers."
+  },
+  {
+   "q": "How long is the iCM program?",
+   "a": "The iCM (iCET Certified Master) program is a 6-month, hands-on software development course delivered across three progressive levels."
+  },
+  {
+   "q": "How much does the iCM course cost?",
+   "a": "The total course fee is LKR 125,000. A one-time payment option brings this down to LKR 90,000 with the current special offer, or you can choose a 2- or 3-installment payment plan."
+  },
+  {
+   "q": "Can university students join iCM alongside their degree?",
+   "a": "Yes. iCM is specifically designed so currently enrolled university students can build practical software development skills alongside their degree, through flexible online, physical, or hybrid classes."
+  },
+  {
+   "q": "Is iCM delivered online or in person?",
+   "a": "Both. iCM is available online, physically at iCET's Panadura campus, or in a hybrid format, so university students and other learners can choose what fits their schedule."
+  },
+  {
+   "q": "What technologies will I learn in iCM?",
+   "a": "Across the three levels, students work with Java, MySQL, JavaScript, TypeScript, HTML5, CSS3, Tailwind CSS, Figma, Spring Boot, Angular, Git, GitHub, and IntelliJ IDEA, alongside core computer science topics like data structures, algorithms, and object-oriented design."
+  },
+  {
+   "q": "How do I apply?",
+   "a": "Contact your student counsellor (hotline 0705 805 805), request your offer letter, choose a payment option and complete payment, then submit your payment receipt with the signed offer letter to complete registration."
+  }
+ ],
+ "programmes": []
+}

@@ -1,0 +1,46 @@
+[
+ {
+  "id": "1",
+  "batch_id": 1,
+  "kv": [
+   [
+    "Name",
+    "Applicant"
+   ],
+   [
+    "Email",
+    "anon-c51235239bd5dfae@applications.invalid"
+   ],
+   [
+    "Phone",
+    "—"
+   ],
+   [
+    "Student ID",
+    "ICET-REG-B64AD773"
+   ],
+   [
+    "Intake",
+    "iCD128 Weekdays"
+   ],
+   [
+    "Submitted",
+    "September 21, 2026 11:33"
+   ],
+   [
+    "Form version",
+    "1"
+   ]
+  ],
+  "answers": [],
+  "files": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7"
+  ]
+ }
+]
