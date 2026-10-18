@@ -1,7 +1,8 @@
 import { CircleHelp, Plus } from "lucide-react";
 import { connection } from "next/server";
 import { sql } from "@/lib/db";
-import { PageHeader, Panel, DataTable, Pagination, EmptyState } from "@/components/admin/ui";
+import { PageHeader, Panel, Pagination, EmptyState } from "@/components/admin/ui";
+import { DataTable } from "@/components/admin/data-table";
 import { Button } from "@/components/ui/button";
 import { ListToolbar, qs } from "@/components/admin/content/list-toolbar";
 import { RowActions } from "@/components/admin/content/row-actions";

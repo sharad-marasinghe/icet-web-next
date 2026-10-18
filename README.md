@@ -17,8 +17,8 @@ npm run dev                        # http://localhost:3000  ·  admin at /admin
 | Variable | Purpose |
 | --- | --- |
 | `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase project (browser + server) |
-| `DATABASE_URL` | Postgres **session pooler** URL (`aws-0-<region>.pooler.supabase.com:5432`, user `postgres.<ref>`) — server only |
-| `DATABASE_POOL_URL` | Optional transaction pooler (port 6543) for serverless deployments |
+| `DATABASE_URL` | Postgres **session pooler** URL (`aws-0-<region>.pooler.supabase.com:5432`, user `postgres.<ref>`). Used by `next build` and the seed scripts |
+| `DATABASE_POOL_URL` | **Transaction pooler** URL (same host, port `6543`). Runtime connection for `next dev`/`next start`. Required: the session pooler only allows 15 clients |
 | `SUPABASE_SERVICE_ROLE_KEY` | Optional. When absent, storage writes from the server use `STORAGE_USER`/`STORAGE_PASSWORD` (a staff account) |
 | `APP_SECRET` | Signs public form tokens (anti-bot), download links |
 | `NEXT_PUBLIC_SITE_URL` | Canonical site URL for SEO, emails and certificate links |

@@ -8,6 +8,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { sql, getToken, uploadFile, MIME, readJson, slugify, bid, imageSize } from "./lib";
+import { looksLikeHtml } from "./lib";
 
 const LEGACY_DIR = process.env.LEGACY_MEDIA_DIR || "/tmp/claude-1000/-run-media-sharadamarasinghe-01DCB46A126F9D70-iCET-web-next/fddb6949-9408-4df4-a0ad-abb7c1f8c86e/scratchpad/site/dl";
 const CAMPUS_DIR = process.env.CAMPUS_DIR || path.resolve(process.cwd(), "../icet-web/WEB IMAGES/WEB IMAGES");
@@ -46,7 +47,7 @@ async function U(legacy: string | null | undefined): Promise<string | null> {
       if (res.ok) buf = Buffer.from(await res.arrayBuffer());
     } catch { /* ignore */ }
   }
-  if (!buf) {
+  if (!buf || (ext !== "svg" && looksLikeHtml(buf))) {
     console.warn("  ! missing media", rel);
     return legacy;
   }
@@ -88,6 +89,7 @@ async function uploadMediaLibrary() {
     if (!MIME[ext]) continue;
     const buf = fs.readFileSync(f);
     if (buf.length > 15 * 1024 * 1024) continue;
+    if (ext !== "svg" && looksLikeHtml(buf)) { console.warn("  ! skipping HTML error page saved as", rel); continue; }
     try {
       const row = await registerMedia(`legacy/${rel}`, buf, MIME[ext], "legacy/" + rel.split("/").slice(0, 2).join("/"), path.basename(rel));
       mediaByRel.set(rel, row);

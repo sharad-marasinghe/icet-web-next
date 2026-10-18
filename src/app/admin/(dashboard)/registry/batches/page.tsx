@@ -4,7 +4,8 @@ import { sql } from "@/lib/db";
 import { getCurrentUser, hasRole } from "@/lib/auth";
 import { formatDate } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { PageHeader, Panel, DataTable, Pagination, SearchBox, StatusBadge, EmptyState } from "@/components/admin/ui";
+import { PageHeader, Panel, Pagination, SearchBox, StatusBadge, EmptyState } from "@/components/admin/ui";
+import { DataTable } from "@/components/admin/data-table";
 import { BatchRowActions } from "@/components/admin/registry/batch-row-actions";
 import { sp, spInt, qs, type AdminPageProps } from "@/components/admin/registry/shared";
 

@@ -4,6 +4,7 @@
  * Idempotent. Run after `npm run seed` (needs the media map for templates).
  */
 import { sql, getToken, uploadFile, MIME, readJson, slugify } from "./lib";
+import { looksLikeHtml } from "./lib";
 import fs from "node:fs";
 import { createHash } from "node:crypto";
 import path from "node:path";
@@ -24,8 +25,8 @@ async function U(legacy: string | null | undefined): Promise<string | null> {
     const res = await fetch(WP + rel, { headers: { "User-Agent": "Mozilla/5.0" } });
     if (res.ok) buf = Buffer.from(await res.arrayBuffer());
   }
-  if (!buf) return legacy;
   const ext = rel.split(".").pop()!.toLowerCase();
+  if (!buf || (ext !== "svg" && looksLikeHtml(buf))) return legacy;
   const url = await uploadFile(token, "media", "legacy/" + rel, buf, MIME[ext] || "application/octet-stream");
   await sql`insert into public.media (bucket, path, url, folder, filename, title, mime_type, size_bytes) values ('media', ${"legacy/" + rel}, ${url}, ${"legacy/" + rel.split("/").slice(0, 2).join("/")}, ${path.basename(rel)}, ${path.basename(rel)}, ${MIME[ext] || ""}, ${buf.length}) on conflict (bucket, path) do nothing`;
   return url;

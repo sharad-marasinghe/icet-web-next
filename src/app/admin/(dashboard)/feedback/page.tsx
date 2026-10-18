@@ -3,7 +3,8 @@ import { connection } from "next/server";
 import { sql } from "@/lib/db";
 import { getCurrentUser, hasRole } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
-import { PageHeader, Panel, DataTable, StatusBadge, EmptyState } from "@/components/admin/ui";
+import { PageHeader, Panel, StatusBadge, EmptyState } from "@/components/admin/ui";
+import { DataTable } from "@/components/admin/data-table";
 import { FeedbackRowActions } from "@/components/admin/feedback/feedback-row-actions";
 import { CopyButton } from "@/components/admin/registry/copy-button";
 

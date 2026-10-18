@@ -5,7 +5,8 @@ import { sql } from "@/lib/db";
 import { getCurrentUser, hasRole } from "@/lib/auth";
 import { formatDate } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { PageHeader, Panel, StatCard, DataTable, Pagination, SearchBox, ASelect, StatusBadge, EmptyState } from "@/components/admin/ui";
+import { PageHeader, Panel, StatCard, Pagination, SearchBox, ASelect, StatusBadge, EmptyState } from "@/components/admin/ui";
+import { DataTable } from "@/components/admin/data-table";
 import { CertificateRowActions, ManualIssueButton, VerifyLink } from "@/components/admin/registry/certificate-actions";
 import { sp, spInt, qs, type AdminPageProps } from "@/components/admin/registry/shared";
 

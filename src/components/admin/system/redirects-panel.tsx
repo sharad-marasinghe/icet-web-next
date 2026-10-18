@@ -5,7 +5,8 @@ import { useActionState } from "react";
 import { useRouter } from "next/navigation";
 import { Plus, Upload, Pencil, Trash2, ArrowRight } from "lucide-react";
 import { cn, formatDate } from "@/lib/utils";
-import { DataTable, AField, AInput, ASelect, ATextarea, Toggle, SubmitButton, ActionToast, initialActionState, Modal, useToast, StatusBadge, EmptyState, type ActionState } from "@/components/admin/ui";
+import { AField, AInput, ASelect, ATextarea, Toggle, SubmitButton, ActionToast, initialActionState, Modal, useToast, StatusBadge, EmptyState, type ActionState } from "@/components/admin/ui";
+import { DataTable } from "@/components/admin/data-table";
 import { Button } from "@/components/ui/button";
 import { addRedirect, updateRedirect, toggleRedirect, deleteRedirect, importRedirects } from "@/app/admin/(dashboard)/redirects/actions";
 

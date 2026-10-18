@@ -26,6 +26,7 @@ Old site reference material lives in `../icet-web` (WordPress plugins we ported:
 - Images: pick from the media library via `src/components/admin/media-picker.tsx` (returns public URL). Uploads go to bucket `media` under `uploads/<yyyy>/<mm>/<slug>-<rand>.<ext>` and insert a row in `public.media`.
 
 ## Gotchas learned
+- DB connections: runtime must use the transaction pooler (`DATABASE_POOL_URL`, :6543). The session pooler (:5432) caps at 15 clients and `next dev` worker threads each open a pool → `EMAXCONNSESSION`. Builds and seed scripts use the session pooler (`DATABASE_URL`). On the transaction pooler postgres.js must run with `prepare: false` and `max_pipeline: 0` — Supavisor stalls forever on pipelined queries (seen as hung pages / "use cache took too long"). Bump `POOL_VERSION` in `src/lib/db.ts` when pool options change.
 - `reg_workshops.form_fields`, `reg_batches.form_fields`, `reg_applications.answers_json` are `json` (not `jsonb`) because question order must survive. Write them with `${JSON.stringify(obj)}` — never `sql.json()` (it is typed jsonb and would re-sort keys).
 - Public routes must only read through cached functions (`"use cache"` in `src/lib/data/*`, incl. `src/lib/data/registry.ts`); uncached reads break prerendering. Dynamic routes need `generateStaticParams`.
 - Admin pages start with `await connection()` and export `instant = false` (request-time only).

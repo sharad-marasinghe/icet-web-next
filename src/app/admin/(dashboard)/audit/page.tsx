@@ -4,7 +4,8 @@ import { ScrollText } from "lucide-react";
 import { requireUser } from "@/lib/auth";
 import { sql } from "@/lib/db";
 import { formatDateTime } from "@/lib/utils";
-import { PageHeader, Panel, DataTable, Pagination, AInput, ASelect, EmptyState, StatusBadge } from "@/components/admin/ui";
+import { PageHeader, Panel, Pagination, AInput, ASelect, EmptyState, StatusBadge } from "@/components/admin/ui";
+import { DataTable } from "@/components/admin/data-table";
 import { Button } from "@/components/ui/button";
 import { MetaViewer } from "@/components/admin/system/meta-viewer";
 

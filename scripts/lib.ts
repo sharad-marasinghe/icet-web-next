@@ -68,3 +68,9 @@ export function imageSize(buf: Buffer): { width: number; height: number } | null
   } catch { /* ignore */ }
   return null;
 }
+
+/** True when a "downloaded image" is really an HTML error page (404s are often served with status 200 or saved by curl -o). */
+export function looksLikeHtml(buf: Buffer) {
+  const head = buf.subarray(0, 512).toString("utf8").trimStart().toLowerCase();
+  return head.startsWith("<!doctype html") || head.startsWith("<html") || (head.startsWith("<") && head.includes("<head"));
+}

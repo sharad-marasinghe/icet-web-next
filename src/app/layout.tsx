@@ -28,8 +28,14 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${inter.variable} ${jakarta.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-background text-foreground">{children}</body>
+    // suppressHydrationWarning: browser extensions (password managers, translators, dark-mode tools)
+    // add attributes to <html>/<body> before React hydrates. This only ignores attribute
+    // differences on these two elements; mismatches inside the page are still reported.
+    <html lang="en" className={`${inter.variable} ${jakarta.variable} h-full antialiased`} suppressHydrationWarning>
+      <body className="min-h-full flex flex-col bg-background text-foreground" suppressHydrationWarning>
+        <TopLoader />
+        {children}
+      </body>
     </html>
   );
 }
