@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/client";
 import { AField, AInput } from "@/components/admin/ui";
 import { Button } from "@/components/ui/button";
 import { Notice } from "@/components/ui/primitives";
+import { startTopLoader } from "@/components/ui/top-loader";
 
 export default function ResetPasswordPage() {
   const router = useRouter();
@@ -20,6 +21,7 @@ export default function ResetPasswordPage() {
     const { error } = await createClient().auth.updateUser({ password: p1 });
     setBusy(false);
     if (error) return setError(error.message);
+    startTopLoader();
     router.replace("/admin");
   }
   return (

@@ -7,6 +7,7 @@ import { Save, Trash2 } from "lucide-react";
 import { ASelect, ATextarea, AField, SubmitButton, ActionToast, initialActionState, ConfirmButton, useToast } from "@/components/admin/ui";
 import { setApplicationStatus, deleteApplicationAction } from "@/app/admin/(dashboard)/registry/applications/actions";
 import { APPLICATION_STATUSES, APPLICATION_STATUS_LABELS } from "./shared";
+import { startTopLoader } from "@/components/ui/top-loader";
 
 export function ApplicationReviewForm({ id, status, notes, isAdmin, batchId }: { id: number; status: string; notes: string; isAdmin: boolean; batchId: number }) {
   const router = useRouter();
@@ -25,7 +26,7 @@ export function ApplicationReviewForm({ id, status, notes, isAdmin, batchId }: {
       </AField>
       <div className="flex items-center justify-between gap-2">
         {isAdmin ? (
-          <ConfirmButton variant="ghost" size="sm" className="text-rose-600 hover:bg-rose-50" message="Delete this application and its uploaded documents? This cannot be undone." onConfirm={async () => { const r = await deleteApplicationAction(id); toast({ tone: r?.ok ? "success" : "error", message: r?.message || "Done" }); if (r?.ok) router.push(`/admin/registry/applications?batch_id=${batchId}`); }}>
+          <ConfirmButton variant="ghost" size="sm" className="text-rose-600 hover:bg-rose-50" message="Delete this application and its uploaded documents? This cannot be undone." onConfirm={async () => { const r = await deleteApplicationAction(id); toast({ tone: r?.ok ? "success" : "error", message: r?.message || "Done" }); if (r?.ok) { startTopLoader(); router.push(`/admin/registry/applications?batch_id=${batchId}`); } }}>
             <Trash2 className="h-3.5 w-3.5" /> Delete
           </ConfirmButton>
         ) : <span />}

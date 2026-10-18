@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Pencil, Eye, Copy, Trash2, Loader2 } from "lucide-react";
 import type { ActionState } from "@/components/admin/ui";
 import { useToast } from "@/components/admin/ui";
+import { startTopLoader } from "@/components/ui/top-loader";
 
 type Action = (id: string) => Promise<ActionState>;
 
@@ -20,7 +21,10 @@ export function RowActions({ id, editHref, viewHref, onDuplicate, onDelete, dele
       const res = await fn(id);
       if (res?.message) toast({ tone: res.ok ? "success" : "error", message: res.message });
       if (res?.ok) {
-        if (kind === "dup" && res.id && editBase) router.push(`${editBase}/${res.id}`);
+        if (kind === "dup" && res.id && editBase) {
+          startTopLoader();
+          router.push(`${editBase}/${res.id}`);
+        }
         else router.refresh();
       }
     } catch (e) {

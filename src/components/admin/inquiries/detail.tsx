@@ -8,6 +8,7 @@ import { Panel, AField, ASelect, ATextarea, SubmitButton, ActionToast, initialAc
 import { Button } from "@/components/ui/button";
 import { waLink, telLink } from "./links";
 import { updateInquiryStatus, assignInquiry, addInquiryNote, deleteInquiry } from "@/app/admin/(dashboard)/inquiries/actions";
+import { startTopLoader } from "@/components/ui/top-loader";
 
 const STATUSES = ["new", "contacted", "qualified", "converted", "closed", "spam"];
 
@@ -47,7 +48,7 @@ export function InquiryActions({ id, status, assignedTo, staff, phone, whatsapp,
         </div>
         {canDelete && (
           <div className="border-t border-slate-100 pt-4">
-            <Button type="button" variant="ghost" size="sm" className="text-rose-600 hover:bg-rose-50" loading={busy === "delete"} onClick={async () => { if (!confirm("Delete this inquiry permanently? This cannot be undone.")) return; const r = await run("delete", () => deleteInquiry(id)); if (r?.ok) router.replace("/admin/inquiries"); }}><Trash2 className="h-4 w-4" /> Delete inquiry</Button>
+            <Button type="button" variant="ghost" size="sm" className="text-rose-600 hover:bg-rose-50" loading={busy === "delete"} onClick={async () => { if (!confirm("Delete this inquiry permanently? This cannot be undone.")) return; const r = await run("delete", () => deleteInquiry(id)); if (r?.ok) { startTopLoader(); router.replace("/admin/inquiries"); } }}><Trash2 className="h-4 w-4" /> Delete inquiry</Button>
           </div>
         )}
       </div>

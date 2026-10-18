@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/client";
 import { AField, AInput } from "@/components/admin/ui";
 import { Button } from "@/components/ui/button";
 import { Notice } from "@/components/ui/primitives";
+import { startTopLoader } from "@/components/ui/top-loader";
 
 export function LoginForm() {
   const router = useRouter();
@@ -40,6 +41,7 @@ export function LoginForm() {
     }
     await fetch("/admin/api/touch-login", { method: "POST" }).catch(() => {});
     const next = sp.get("next");
+    startTopLoader();
     router.replace(next && next.startsWith("/admin") ? next : "/admin");
     router.refresh();
   }

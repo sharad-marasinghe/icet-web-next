@@ -12,6 +12,7 @@ import type { EmailTemplate } from "@/lib/registry/fields";
 import type { SmtpSettings } from "@/lib/mailer";
 import { saveGlobalTemplate, resetGlobalTemplate, saveSmtpSettings, testSmtpConnection, sendSmtpTestEmail } from "@/app/admin/(dashboard)/registry/email/actions";
 import { TemplateEditor } from "./entity-emails";
+import { startTopLoader } from "@/components/ui/top-loader";
 
 export type EmailLogRow = { id: number; to_email: string; subject: string; kind: string; status: string; error: string | null; entity_type: string | null; entity_id: string | null; created_at: string };
 export type EntityLink = { id: number; label: string; kind: "workshop" | "batch"; customised: boolean };
@@ -19,7 +20,7 @@ export type EntityLink = { id: number; label: string; kind: "workshop" | "batch"
 export function EmailSettings({ templates, smtp, hasPass, log, entities, initialTab, logStatus }: { templates: { reg: EmailTemplate; cert: EmailTemplate }; smtp: Omit<SmtpSettings, "pass">; hasPass: boolean; log: EmailLogRow[]; entities: EntityLink[]; initialTab: string; logStatus: string }) {
   const router = useRouter();
   const [tab, setTab] = React.useState(["reg", "cert", "smtp", "log"].includes(initialTab) ? initialTab : "reg");
-  const change = (id: string) => { setTab(id); router.replace(`/admin/registry/email?tab=${id}`); };
+  const change = (id: string) => { setTab(id); startTopLoader(); router.replace(`/admin/registry/email?tab=${id}`); };
   return (
     <div className="space-y-5">
       <Panel title="Editing emails for" description="Global templates apply everywhere unless a workshop or batch overrides them in its own editor.">
@@ -38,7 +39,7 @@ function EntitySelector({ entities }: { entities: EntityLink[] }) {
   const router = useRouter();
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <ASelect className="w-auto max-w-md" defaultValue="" onChange={(e) => { const v = e.target.value; if (!v) return; const [kind, id] = v.split(":"); router.push(kind === "workshop" ? `/admin/registry/workshops/${id}` : `/admin/registry/batches/${id}`); }}>
+      <ASelect className="w-auto max-w-md" defaultValue="" onChange={(e) => { const v = e.target.value; if (!v) return; const [kind, id] = v.split(":"); startTopLoader(); router.push(kind === "workshop" ? `/admin/registry/workshops/${id}` : `/admin/registry/batches/${id}`); }}>
         <option value="">Global defaults (this page)</option>
         <optgroup label="Workshops">{entities.filter((e) => e.kind === "workshop").map((e) => <option key={`w${e.id}`} value={`workshop:${e.id}`}>{e.label}{e.customised ? " · customised" : ""}</option>)}</optgroup>
         <optgroup label="Academic batches">{entities.filter((e) => e.kind === "batch").map((e) => <option key={`b${e.id}`} value={`batch:${e.id}`}>{e.label}{e.customised ? " · customised" : ""}</option>)}</optgroup>

@@ -10,6 +10,7 @@ import {
 import { cn } from "@/lib/utils";
 import { createClient } from "@/lib/supabase/client";
 import type { AdminUser } from "@/lib/auth";
+import { startTopLoader } from "@/components/ui/top-loader";
 
 type Item = { label: string; href: string; icon: React.ElementType; min?: AdminUser["role"]; badge?: number };
 type Group = { title: string; items: Item[] };
@@ -77,6 +78,7 @@ export function AdminShell({ user, counts, children }: { user: AdminUser; counts
   const isActive = (href: string) => (href === "/admin" ? pathname === "/admin" : pathname.startsWith(href));
   const signOut = async () => {
     await createClient().auth.signOut();
+    startTopLoader();
     router.replace("/admin/login");
     router.refresh();
   };

@@ -44,10 +44,15 @@ function isInternalNavigation(e: MouseEvent): boolean {
   return url.pathname !== window.location.pathname || url.search !== window.location.search;
 }
 
-export function TopLoader({ color = "var(--brand-600)" }: { color?: string }) {
+/**
+ * Default colours: the green/cyan of the iCET logo. Brand blue would vanish against the blue
+ * announcement bar at the top of the site, while green/cyan reads on both blue and white.
+ */
+export function TopLoader({ from = "#22c55e", to = "#22d3ee" }: { from?: string; to?: string }) {
   const [progress, setProgress] = React.useState(0);
   const [visible, setVisible] = React.useState(false);
   const active = React.useRef(false);
+  const startAddress = React.useRef("");
   const timers = React.useRef<{ show?: number; trickle?: number; safety?: number; hide?: number }>({});
 
   React.useEffect(() => {
@@ -64,16 +69,17 @@ export function TopLoader({ color = "var(--brand-600)" }: { color?: string }) {
       active.current = false;
       clearAll();
       setProgress(100);
-      // Let the bar reach 100% and fade before resetting it.
+      // Let the bar reach 100%, fade out at full width, then reset it while invisible.
       t.hide = window.setTimeout(() => {
         setVisible(false);
-        setProgress(0);
-      }, 300);
+        t.hide = window.setTimeout(() => setProgress(0), 320);
+      }, 250);
     };
 
     const start = () => {
       if (active.current) return;
       active.current = true;
+      startAddress.current = window.location.pathname + window.location.search;
       clearAll();
       setProgress(0);
       t.show = window.setTimeout(() => {
@@ -91,11 +97,20 @@ export function TopLoader({ color = "var(--brand-600)" }: { color?: string }) {
       if (isInternalNavigation(e)) start();
     };
 
-    // Next.js commits client navigations with history.pushState.
+    // Next.js commits client navigations with history.pushState (router.push / <Link>) or
+    // history.replaceState (router.replace). replaceState is also used for housekeeping such as
+    // scroll restoration, so it only counts when the address actually changed.
+    const currentAddress = () => window.location.pathname + window.location.search;
     const originalPushState = window.history.pushState;
+    const originalReplaceState = window.history.replaceState;
     window.history.pushState = function patchedPushState(this: History, ...args: Parameters<History["pushState"]>) {
       const result = originalPushState.apply(this, args);
       done();
+      return result;
+    };
+    window.history.replaceState = function patchedReplaceState(this: History, ...args: Parameters<History["replaceState"]>) {
+      const result = originalReplaceState.apply(this, args);
+      if (active.current && currentAddress() !== startAddress.current) done();
       return result;
     };
 
@@ -110,7 +125,8 @@ export function TopLoader({ color = "var(--brand-600)" }: { color?: string }) {
       window.removeEventListener(DONE_EVENT, done);
       window.removeEventListener("popstate", done);
       window.removeEventListener("pageshow", done);
-      if (window.history.pushState !== originalPushState) window.history.pushState = originalPushState;
+      window.history.pushState = originalPushState;
+      window.history.replaceState = originalReplaceState;
       clearAll();
     };
   }, []);
@@ -118,6 +134,7 @@ export function TopLoader({ color = "var(--brand-600)" }: { color?: string }) {
   return (
     <div
       aria-hidden
+      data-top-loader=""
       className="pointer-events-none fixed inset-x-0 top-0 z-[100] h-[3px] print:hidden"
       style={{ opacity: visible ? 1 : 0, transition: "opacity 300ms ease" }}
     >
@@ -125,15 +142,15 @@ export function TopLoader({ color = "var(--brand-600)" }: { color?: string }) {
         className="relative h-full"
         style={{
           width: `${progress}%`,
-          background: `linear-gradient(90deg, ${color}, var(--brand-400))`,
+          background: `linear-gradient(90deg, ${from}, ${to})`,
           transition: progress === 0 ? "none" : "width 200ms ease-out",
-          boxShadow: `0 0 10px ${color}, 0 0 4px ${color}`,
+          boxShadow: `0 0 10px ${to}, 0 0 4px ${to}`,
         }}
       >
         {/* Glowing tip, as in the reference design */}
         <span
           className="absolute right-0 top-0 h-full w-24"
-          style={{ boxShadow: `0 0 12px 2px ${color}`, opacity: 0.9, transform: "rotate(2deg) translate(0, -2px)" }}
+          style={{ boxShadow: `0 0 12px 2px ${to}`, opacity: 0.9, transform: "rotate(2deg) translate(0, -2px)" }}
         />
       </div>
     </div>
